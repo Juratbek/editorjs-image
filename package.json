@@ -1,6 +1,6 @@
 {
-  "name": "@editorjs/image",
-  "version": "2.9.0",
+  "name": "@juratbek/editorjs-image",
+  "version": "1.0.0",
   "keywords": [
     "codex editor",
     "image",
@@ -9,7 +9,7 @@
   ],
   "description": "Image Tool for Editor.js",
   "license": "MIT",
-  "repository": "https://github.com/editor-js/image",
+  "repository": "https://github.com/Juratbek/editorjs-image",
   "files": [
     "dist"
   ],
@@ -29,8 +29,7 @@
     "lint:fix": "eslint src/ --ext .js --fix"
   },
   "author": {
-    "name": "CodeX",
-    "email": "team@ifmo.su"
+    "name": "Juratbek"
   },
   "devDependencies": {
     "@codexteam/ajax": "^4.2.0",

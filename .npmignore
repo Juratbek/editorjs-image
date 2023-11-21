@@ -1,6 +1,7 @@
 .idea/
 dev/
 src/
+example/
 .babelrc
 .eslintrc
 vite.config.js

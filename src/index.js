@@ -46,7 +46,13 @@ import './index.css';
 import Ui from './ui';
 import Uploader from './uploader';
 
-import { IconAddBorder, IconStretch, IconAddBackground, IconPicture } from '@codexteam/icons';
+import {
+  IconAddBorder,
+  IconStretch,
+  IconAddBackground,
+  IconPicture,
+  IconAlignCenter,
+} from '@codexteam/icons';
 
 /**
  * @typedef {object} ImageConfig
@@ -121,6 +127,12 @@ export default class ImageTool {
         name: 'withBackground',
         icon: IconAddBackground,
         title: 'With background',
+        toggle: true,
+      },
+      {
+        name: 'centeredCaption',
+        icon: IconAlignCenter,
+        title: 'Center the caption',
         toggle: true,
       },
     ];
@@ -235,7 +247,7 @@ export default class ImageTool {
     // @see https://github.com/editor-js/image/pull/49
     const tunes = ImageTool.tunes.concat(this.config.actions);
 
-    return tunes.map(tune => ({
+    return tunes.map((tune) => ({
       icon: tune.icon,
       label: this.api.i18n.t(tune.title),
       name: tune.name,
@@ -290,7 +302,7 @@ export default class ImageTool {
        * Drag n drop file from into the Editor
        */
       files: {
-        mimeTypes: [ 'image/*' ],
+        mimeTypes: ['image/*'],
       },
     };
   }
@@ -355,7 +367,8 @@ export default class ImageTool {
     this.ui.fillCaption(this._data.caption);
 
     ImageTool.tunes.forEach(({ name: tune }) => {
-      const value = typeof data[tune] !== 'undefined' ? data[tune] === true || data[tune] === 'true' : false;
+      const value =
+        typeof data[tune] !== 'undefined' ? data[tune] === true || data[tune] === 'true' : false;
 
       this.setTune(tune, value);
     });
@@ -449,10 +462,11 @@ export default class ImageTool {
       /**
        * Wait until the API is ready
        */
-      Promise.resolve().then(() => {
-        this.block.stretched = value;
-      })
-        .catch(err => {
+      Promise.resolve()
+        .then(() => {
+          this.block.stretched = value;
+        })
+        .catch((err) => {
           console.error(err);
         });
     }
