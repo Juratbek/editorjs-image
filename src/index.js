@@ -321,6 +321,15 @@ export default class ImageTool {
       case 'tag': {
         const image = event.detail.data;
 
+        if (image.localName === 'figcaption') {
+          const text = 'this is caption';
+          const index = this.api.blocks.getCurrentBlockIndex();
+
+          this.api.blocks.update(index - 1, { caption: text });
+
+          return;
+        }
+
         /** Images from PDF */
         if (/^blob:/.test(image.src)) {
           const response = await fetch(image.src);
@@ -330,7 +339,10 @@ export default class ImageTool {
           break;
         }
 
-        this.uploadUrl(image.src);
+        this.onUpload({
+          success: true,
+          file: { url: image.src },
+        });
         break;
       }
       case 'pattern': {
